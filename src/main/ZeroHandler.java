@@ -27,7 +27,9 @@ public class ZeroHandler {
 
     private static int[][] matrix;
     private static int[][] updatedMatrix;
-    private static MatrixMaker matrixMaker = new MatrixMaker();
+    private static MatrixMaker matrixMaker;
+    private static int noOfRows;
+    private static int noOfColumns;
 
     /**
      * starting point of updation of zeros in matrix
@@ -42,8 +44,8 @@ public class ZeroHandler {
 
         intializeRequiredArrays();
 
-        for(int rowTraverser=0; rowTraverser < matrixMaker.getNoOfRows() ; rowTraverser++){
-            for(int columnTraverser = 0; columnTraverser < matrixMaker.getNoOfColumns(); columnTraverser++){
+        for(int rowTraverser=0; rowTraverser < noOfRows ; rowTraverser++){
+            for(int columnTraverser = 0; columnTraverser < noOfColumns; columnTraverser++){
                 matrixElementHandler(rowTraverser, columnTraverser);
             }
         }
@@ -57,8 +59,13 @@ public class ZeroHandler {
      * @return  void
      */
     public static void intializeRequiredArrays(){
+        matrixMaker = new MatrixMaker();
+
         matrix = matrixMaker.getMatrix();
-        updatedMatrix= new int[matrixMaker.getNoOfRows()][matrixMaker.getNoOfColumns()];
+        noOfRows = matrixMaker.getNoOfRows();
+        noOfColumns = matrixMaker.getNoOfColumns();
+
+        updatedMatrix= new int[noOfRows][noOfColumns];
 
         for(int[] row: updatedMatrix){
             Arrays.fill(row, -1);
@@ -77,7 +84,6 @@ public class ZeroHandler {
             makeRowAndColumnZero(rowTraverser, columnTraverser);
         }else {
             updateInUpdatedMatrix(rowTraverser, columnTraverser);
-            return;
         }
     }
 
@@ -111,9 +117,7 @@ public class ZeroHandler {
      * @return  void
      */
     public static void updateInUpdatedMatrix(int rowTraverser, int columnTraverser){
-        if(updatedMatrix[rowTraverser][columnTraverser] == 0){
-            return;
-        }else{
+        if(updatedMatrix[rowTraverser][columnTraverser] != 0){
             updatedMatrix[rowTraverser][columnTraverser] = matrix[rowTraverser][columnTraverser];
         }
     }
@@ -137,7 +141,7 @@ public class ZeroHandler {
      * @return  void
      */
     public static void makeRightElementsInRowZero(int rowTraverser, int columnTraverser){
-        for(int i=columnTraverser ;i < matrixMaker.getNoOfColumns();i++){
+        for(int i=columnTraverser ;i < noOfColumns;i++){
             updatedMatrix[rowTraverser][i] = 0;
         }
     }
@@ -161,25 +165,9 @@ public class ZeroHandler {
      * @return  void
      */
     public static void makeBottomElementsInColumnZero(int rowTraverser, int columnTraverser){
-        for(int i=rowTraverser ; i < matrixMaker.getNoOfColumns() ;i++){
+        for(int i=rowTraverser ; i < noOfRows ;i++){
             updatedMatrix[i][columnTraverser] = 0;
         }
     }
 
 }
-
-
-//        for(int rowTraverser=0; rowTraverser < matrixMaker.getNoOfRows(); rowTraverser++){
-//            for(int columnTraverser = 0; columnTraverser < matrixMaker.getNoOfRows(); columnTraverser++){
-//                System.out.print(updatedMatrix[rowTraverser][columnTraverser]);
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
-
-//for(int rowTraverser=0; rowTraverser < matrixMaker.getNoOfRows(); rowTraverser++){
-//        for(int columnTraverser = 0; columnTraverser < matrixMaker.getNoOfRows(); columnTraverser++){
-//        System.out.print(updatedMatrix[rowTraverser][columnTraverser]);
-//        }
-//        System.out.println();
-//        }

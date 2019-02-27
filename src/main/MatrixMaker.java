@@ -30,7 +30,7 @@ public class MatrixMaker {
     private static int noOfRows;
     private static int noOfColumns;
     private static int[][] matrix;
-    private static final String invalidInputErrorMessage="exception occured as input is not in valid format, please input only in numbers between -2,147,483,648 2,147,483,647";
+    private static final String INVALID_INPUT_ERROR_MESSAGE="exception occured as input is not in valid format, please input only in numbers between -2,147,483,648 2,147,483,647";
 
     public static void main(String[] args) {
         noOfRows=inputHandler("enter value for m: no. of rows");
@@ -57,7 +57,7 @@ public class MatrixMaker {
         try {
             input = scanner.nextInt();
         }catch (InputMismatchException inputMismatchException){
-            logger.warning(invalidInputErrorMessage);
+            logger.warning(INVALID_INPUT_ERROR_MESSAGE);
         }
 
 
@@ -119,11 +119,3 @@ public class MatrixMaker {
         MatrixMaker.matrix = matrix;
     }
 }
-
-//        for(int rowTraverser=0; rowTraverser < noOfRows; rowTraverser++){
-//        for(int columnTraverser = 0; columnTraverser < noOfColumns; columnTraverser++){
-//        System.out.print(matrix[rowTraverser][columnTraverser]);
-//        }
-//        System.out.println();
-//        }
-//        System.out.println();

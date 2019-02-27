@@ -110,4 +110,103 @@ public class MatrixTester{
 
         assertEquals(expectedMatrixString, resultMatrixString);
     }
+
+    @Test
+    public void testValidCaseThree() {
+        MatrixMaker matrixMaker = new MatrixMaker();
+        ZeroHandler zeroHandler = new ZeroHandler();
+        matrixMaker.setNoOfRows(3);
+        matrixMaker.setNoOfColumns(4);
+
+        int[][] matrixInput = {
+                {0, 2,      3, 1},
+                {2, 1234, 1234, 1},
+                {4, 1234,    0, 1}};
+
+        int[][] expectedResult = {
+                {0, 0,    0, 0},
+                {0, 1234, 0, 1},
+                {0, 0,    0, 0}
+        };
+
+        matrixMaker.setMatrix(matrixInput);
+        int[][] resultMatrix = zeroHandler.zeroInMatrixHandler();
+
+        String resultMatrixString = Arrays
+                .stream(resultMatrix)
+                .map(Arrays::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        String expectedMatrixString = Arrays
+                .stream(expectedResult)
+                .map(Arrays::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        assertEquals(expectedMatrixString, resultMatrixString);
+    }
+
+    @Test
+    public void testValidCaseFour() {
+        MatrixMaker matrixMaker = new MatrixMaker();
+        ZeroHandler zeroHandler = new ZeroHandler();
+        matrixMaker.setNoOfRows(1);
+        matrixMaker.setNoOfColumns(4);
+
+        int[][] matrixInput = {
+                {0, 2,      3, 1}};
+
+        int[][] expectedResult = {
+                {0, 0,    0, 0}
+        };
+
+        matrixMaker.setMatrix(matrixInput);
+        int[][] resultMatrix = zeroHandler.zeroInMatrixHandler();
+
+        String resultMatrixString = Arrays
+                .stream(resultMatrix)
+                .map(Arrays::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        String expectedMatrixString = Arrays
+                .stream(expectedResult)
+                .map(Arrays::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        assertEquals(expectedMatrixString, resultMatrixString);
+    }
+
+    @Test
+    public void testValidCaseFive() {
+        MatrixMaker matrixMaker = new MatrixMaker();
+        ZeroHandler zeroHandler = new ZeroHandler();
+        matrixMaker.setNoOfRows(4);
+        matrixMaker.setNoOfColumns(1);
+
+        int[][] matrixInput = {
+                {0},
+                {1},
+                {2},
+                {4}};
+
+        int[][] expectedResult = {
+                {0},
+                {0},
+                {0},
+                {0}};
+
+        matrixMaker.setMatrix(matrixInput);
+        int[][] resultMatrix = zeroHandler.zeroInMatrixHandler();
+
+        String resultMatrixString = Arrays
+                .stream(resultMatrix)
+                .map(Arrays::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        String expectedMatrixString = Arrays
+                .stream(expectedResult)
+                .map(Arrays::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        assertEquals(expectedMatrixString, resultMatrixString);
+    }
 }
