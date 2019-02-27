@@ -60,6 +60,7 @@ public class MatrixMaker {
             logger.warning(invalidInputErrorMessage);
         }
 
+
         return input;
     }
 
