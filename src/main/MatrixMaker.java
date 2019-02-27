@@ -36,10 +36,15 @@ public class MatrixMaker {
         noOfRows=inputHandler("enter value for m: no. of rows");
         noOfColumns=inputHandler("enter value for n: no. of columns");
 
-        matrix=matrixInputHandler();
+        try {
+            matrix = matrixInputHandler();
+            ZeroHandler zeroHandler = new ZeroHandler();
+            zeroHandler.zeroInMatrixHandler();
+        }catch (NegativeArraySizeException negativeArraySizeException){
+            logger.warning("array size cannot be negative");
+        }
 
-        ZeroHandler zeroHandler = new ZeroHandler();
-        zeroHandler.zeroInMatrixHandler();
+
     }
 
     /**
@@ -72,6 +77,7 @@ public class MatrixMaker {
      * @return  void
      */
     public static int[][] matrixInputHandler(){
+
         int[][] matrix= new int[noOfRows][noOfColumns];
 
         for(int rowTraverser=0; rowTraverser < noOfRows; rowTraverser++){
